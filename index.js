@@ -11,4 +11,8 @@ const votesRouter = require("./routes/votes");
 app.use("/api", votesRouter);
 
 // start the server
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () =>
+  console.log(
+    `Example app listening on port ${(port, process.env.PGPASSWORD)}!`
+  )
+);
