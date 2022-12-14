@@ -29,22 +29,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Vote",
-      setterMethods: {
-        vote(value) {
-          this.setDataValue("vote", value.toLowerCase());
-        },
-      },
-      getterMethods: {
-        totalVotes() {
-          return Vote.count();
-        },
-        totalCokeVotes() {
-          return Vote.count({ where: { vote: "coke" } });
-        },
-        totalPepsiVotes() {
-          return Vote.count({ where: { vote: "pepsi" } });
-        },
-      },
     }
   );
   return Vote;

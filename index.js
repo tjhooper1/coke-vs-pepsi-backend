@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const { sequelize } = require("./models");
 
 // middleware
 app.use(express.json());
@@ -11,8 +12,7 @@ const votesRouter = require("./routes/votes");
 app.use("/api", votesRouter);
 
 // start the server
-app.listen(port, () =>
-  console.log(
-    `Example app listening on port ${(port, process.env.PGPASSWORD)}!`
-  )
-);
+app.listen(port, async () => {
+  console.log(`Example app listening on port!`);
+  await sequelize.sync({ force: true });
+});
